@@ -6,6 +6,7 @@ namespace _02_Scripts
 {
     public class BallPositionController : MonoBehaviour
     {
+        [Header("실험 순서 조합을 읽어올 CSV 파일 경로")]
         public string filePath;
 
         public List<GameObject> positionPreset = new();
@@ -45,13 +46,12 @@ namespace _02_Scripts
             {
                 participantNumber += 1;
                 LoadRandomizedPositionsFromCSV();
-                // SetBallPosition();
+                // SetBallPosition(); // 키보드를 누를 때만 ball의 위치 업데이트
             }
 
-            SetBallPosition();
+            SetBallPosition(); // 실시간으로 ball의 위치 업데이트
         }
 
-        // ReSharper disable Unity.PerformanceAnalysis
         private void SetBallPosition()
         {
             if (randomizedPositionIndex.Count > 0)
